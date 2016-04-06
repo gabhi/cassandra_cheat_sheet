@@ -39,42 +39,122 @@
 
 <div class="container">
   <div class="row">
-    <nav class="col-sm-3" id="myScrollspy">
-      <ul class="nav nav-pills nav-stacked" data-spy="affix" data-offset-top="205">
-        <li><a href="#section1">Section 1</a></li>
-        <li><a href="#section2">Section 2</a></li>
-        <li><a href="#section3">Section 3</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 4 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#section41">Section 4-1</a></li>
-            <li><a href="#section42">Section 4-2</a></li>                     
-          </ul>
-        </li>
-      </ul>
-    </nav>
-    <div class="col-sm-9">
-      <div id="section1">    
-        <h1>Section 1</h1>
-        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-      </div>
-      <div id="section2"> 
-        <h1>Section 2</h1>
-        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-      </div>        
-      <div id="section3">         
-        <h1>Section 3</h1>
-        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-      </div>
-      <div id="section41">         
-        <h1>Section 4-1</h1>
-        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-      </div>      
-      <div id="section42">         
-        <h1>Section 4-2</h1>
-        <p>Try to scroll this section and look at the navigation list while scrolling!</p>
-      </div>
-    </div>
+     <h3 class="c-base__title">Cassandra</h3>
+<h4 class="c-base__sub">A quick reference of Apache's Cassandra database</h4>
+<div class="cheatsheet__container">
+<div class="cheatsheet__section terminal">
+<h6 class="cheatsheet__title tx-clr--slate">KEYSPACE</h6>
+<table>
+<tbody>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">CREATE ( KEYSPACE | SCHEMA ) keyspace_name WITH REPLICATION = map AND DURABLE_WRITES = ( true | false )</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Define a new keyspace and its replica placement strategy.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">USE keyspace_name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Connect the client session to a keyspace.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">ALTER ( KEYSPACE | SCHEMA ) keyspace_name WITH REPLICATION = map| ( WITH DURABLE_WRITES = ( true | false )) AND ( DURABLE_WRITES = ( true | false))</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Change property values of a keyspace.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">DROP ( KEYSPACE | SCHEMA ) keyspace_name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove the keyspace.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cheatsheet__section terminal">
+<h6 class="cheatsheet__title tx-clr--slate">USER</h6>
+<table>
+<tbody>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">CREATE USER user_name WITH PASSWORD 'password' ( NOSUPERUSER | SUPERUSER )</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Create a new user.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">ALTER USER user_name WITH PASSWORD 'password' ( NOSUPERUSER | SUPERUSER )</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Alter existing user options.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">DROP USER user_name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove a user.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">LIST permission_name PERMISSION| ( LIST ALL PERMISSIONS ) ON resource OF user_name NORECURSIVE</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">List permissions granted to a user.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">LIST USERS</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">List existing users and their superuser status.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cheatsheet__section terminal showhide">
+<h6 class="cheatsheet__title tx-clr--slate">TABLE</h6>
+<table>
+<tbody>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">CREATE TABLE keyspace_name.table_name ( column_definition, column_definition, ...) WITH property AND property ...</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Define a new table.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">ALTER TABLE keyspace_name.table_name instruction</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Modify the column metadata of a table.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">SELECT select_expression FROM keyspace_name.table_name WHERE relation AND relation ... ORDER BY ( clustering_column ( ASC | DESC )...) LIMIT n ALLOW FILTERING</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Retrieve data from a Cassandra table.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">UPDATEkeyspace_name.table_name USING option AND option SET assignment, assignment, ... WHERE row_specification</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Update columns in a row.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">DELETE column_name, ... | ( column_name term ) FROM keyspace_name.table_name USING TIMESTAMP integer WHERE row_specification</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Removes entire rows or one or more columns from one or more rows.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">TRUNCATE keyspace_name.table_name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove all data from a table.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">INSERT INTO keyspace_name.table_name ( column_name, column_name...) VALUES ( value, value ... ) USING option AND option</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Add or update columns.</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">DROP TABLE keyspace_name.table_name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove the named table.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cheatsheet__section terminal showhide">
+<h6 class="cheatsheet__title tx-clr--slate">INDEX</h6>
+<table>
+<tbody>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">CREATE CUSTOM INDEX index_name ON keyspace_name.table_name ( column_name ) (USING class_name) (WITH OPTIONS = map)</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Define a new index on a single column of a table.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">DROP INDEX name</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Drop the named index.</td>
+</tr>
+<tr>
+<td class="cheatsheet__key"><code class="bg-clr--platinum">days.removeValueForKey("mon")</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove "mon" from the dictionary</td>
+</tr>
+<tr class="">
+<td class="cheatsheet__key"><code class="bg-clr--platinum">days["tue"] = nil</code></td>
+<td class="cheatsheet__value tx-clr--slate-light">Remove "tue" from the dictionary</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
   </div>
 </div>
 
